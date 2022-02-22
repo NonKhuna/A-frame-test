@@ -39,6 +39,7 @@
 
     <!-- a-frame scene -->
     <a-scene
+      id="scene"
       vr-mode-ui="enabled: false;"
       renderer="logarithmicDepthBuffer: true;"
       embedded
@@ -48,21 +49,46 @@
       <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
       <a-nft
         type="nft"
-        url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
+        url="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
         smooth="true"
         smoothCount="10"
         smoothTolerance=".01"
         smoothThreshold="5">
           <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
+          <a-sphere position="1 0 3"></a-sphere>
           <a-entity
           gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
               scale="5 5 5"
-              position="100 100 0"
+              position="0 0 0"
           >
           </a-entity>
       </a-nft>
       <!-- static camera that moves according to the device movemenents -->
       <a-entity camera></a-entity>
+
+      <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyB4YFFGrtSLfOwx0x6LbVWWCNKvqLbw6Bs",
+          authDomain: "a-frame-test-4d071.firebaseapp.com",
+          projectId: "a-frame-test-4d071",
+          storageBucket: "a-frame-test-4d071.appspot.com",
+          messagingSenderId: "1001202944977",
+          appId: "1:1001202944977:web:a5764b4c8efd3ad24b6ef0",
+          measurementId: "G-KNTRSKMBT6"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
     </a-scene>
   </body>
 </html>
